@@ -1,7 +1,5 @@
 library spring;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:spring/src/spring_kit.dart';
+export 'package:spring/src/spring_controller.dart' hide SpringAnimation;
+export 'src/enums.dart' hide CardProps;
