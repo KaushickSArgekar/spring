@@ -15,3 +15,11 @@ enum SlideType {
 enum CardProps{
   width,height,elevation,color,shadowColor
 }
+
+
+enum AnimStatus{
+  forward,
+  reverse,
+  dismissed,
+  completed,
+}

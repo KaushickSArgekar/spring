@@ -21,21 +21,14 @@ class SpringExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-            child: Spring.card(
-                animDuration: Duration(seconds: 5),
-                fromWidth: 50,
-                toWidth: 100,
-                fromHeight: 50,
-                fromColor: Colors.amber,
-                toColor: Colors.blue,
-                toHeight: 300,
-                child: Center(
-                    child: FittedBox(
-                        child: Text(
-                  'hello',
-                  style: TextStyle(fontSize: 60),
-                ))))));
+      backgroundColor: Colors.white,
+      body: Center(
+          child: Spring.slide(
+              animStatus: (status) {
+                print(status);
+              },
+              slideType: SlideType.slide_in_left,
+              child: FlutterLogo())),
+    );
   }
 }

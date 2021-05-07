@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'package:spring/src/enums.dart';
 import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
-class Scale extends StatefulWidget {
+class SpringScale extends StatefulWidget {
   final SpringController springController;
   final double start;
   final double end;
   final Duration delay;
   final Duration duration;
   final Curve curve;
+  final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const Scale({
+  const SpringScale({
     Key? key,
     required this.springController,
     required this.start,
@@ -21,14 +23,15 @@ class Scale extends StatefulWidget {
     required this.delay,
     required this.duration,
     required this.curve,
+    this.animStatus,
     required this.child,
   }) : super(key: key);
 
   @override
-  _ScaleState createState() => _ScaleState();
+  _SpringScaleState createState() => _SpringScaleState();
 }
 
-class _ScaleState extends State<Scale> {
+class _SpringScaleState extends State<SpringScale> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -68,6 +71,11 @@ class _ScaleState extends State<Scale> {
     return CustomAnimation<double>(
       control: customAnimationControl,
       duration: duration,
+      animationStatusListener: (status) {
+        if (widget.animStatus != null) {
+          widget.animStatus!(CustomMethods.toAnimStatus(status));
+        }
+      },
       delay: delay,
       curve: curve,
       tween: widget.start.toDouble().tweenTo(widget.end.toDouble()),

@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'package:spring/spring.dart';
+import 'package:spring/src/enums.dart';
 import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
-class SpringBlink extends StatefulWidget {
+class SpringOpacity extends StatefulWidget {
   final SpringController springController;
-  final double startOpacity;
-  final double endOpacity;
+  final double start;
+  final double end;
   final Duration delay;
   final Duration duration;
   final Curve curve;
   final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const SpringBlink({
+  const SpringOpacity({
     Key? key,
     required this.springController,
-    required this.startOpacity,
-    required this.endOpacity,
+    required this.start,
+    required this.end,
     required this.delay,
     required this.duration,
     required this.curve,
-    this.animStatus,
     required this.child,
+    this.animStatus,
   }) : super(key: key);
 
   @override
-  _SpringBlinkState createState() => _SpringBlinkState();
+  _SpringOpacityState createState() => _SpringOpacityState();
 }
 
-class _SpringBlinkState extends State<SpringBlink> {
+class _SpringOpacityState extends State<SpringOpacity> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -57,10 +57,8 @@ class _SpringBlinkState extends State<SpringBlink> {
   @override
   void didChangeDependencies() {
     setState(() {
-      customAnimationControl = widget.springController.initialAnim == Motion.play
-          ? CustomAnimationControl.mirror
-          : CustomMethods.initialAnim(widget.springController.initialAnim);
-
+      customAnimationControl =
+          CustomMethods.initialAnim(widget.springController.initialAnim);
       delay = widget.delay;
       duration = widget.duration;
       curve = widget.curve;
@@ -73,15 +71,14 @@ class _SpringBlinkState extends State<SpringBlink> {
     return CustomAnimation<double>(
       control: customAnimationControl,
       duration: duration,
-      delay: delay,
-      curve: curve,
       animationStatusListener: (status) {
         if (widget.animStatus != null) {
           widget.animStatus!(CustomMethods.toAnimStatus(status));
         }
       },
-      tween: (widget.startOpacity.toDouble())
-          .tweenTo(widget.endOpacity.toDouble()),
+      delay: delay,
+      curve: curve,
+      tween: widget.start.toDouble().tweenTo(widget.end.toDouble()),
       builder: (context, child, value) {
         return Opacity(opacity: value, child: widget.child);
       },

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:spring/spring.dart';
@@ -5,33 +7,35 @@ import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
-class SpringBlink extends StatefulWidget {
+class SpringRotate extends StatefulWidget {
   final SpringController springController;
-  final double startOpacity;
-  final double endOpacity;
+  final double startAngle;
+  final double endAngle;
+  final Alignment alignment;
   final Duration delay;
   final Duration duration;
   final Curve curve;
   final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const SpringBlink({
+  const SpringRotate({
     Key? key,
     required this.springController,
-    required this.startOpacity,
-    required this.endOpacity,
     required this.delay,
     required this.duration,
     required this.curve,
-    this.animStatus,
+    required this.startAngle,
+    required this.endAngle,
+    required this.alignment,
     required this.child,
+    this.animStatus
   }) : super(key: key);
 
   @override
-  _SpringBlinkState createState() => _SpringBlinkState();
+  _SpringRotateState createState() => _SpringRotateState();
 }
 
-class _SpringBlinkState extends State<SpringBlink> {
+class _SpringRotateState extends State<SpringRotate> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -57,9 +61,8 @@ class _SpringBlinkState extends State<SpringBlink> {
   @override
   void didChangeDependencies() {
     setState(() {
-      customAnimationControl = widget.springController.initialAnim == Motion.play
-          ? CustomAnimationControl.mirror
-          : CustomMethods.initialAnim(widget.springController.initialAnim);
+      customAnimationControl =
+          CustomMethods.initialAnim(widget.springController.initialAnim);
 
       delay = widget.delay;
       duration = widget.duration;
@@ -74,19 +77,26 @@ class _SpringBlinkState extends State<SpringBlink> {
       control: customAnimationControl,
       duration: duration,
       delay: delay,
-      curve: curve,
       animationStatusListener: (status) {
         if (widget.animStatus != null) {
           widget.animStatus!(CustomMethods.toAnimStatus(status));
         }
       },
-      tween: (widget.startOpacity.toDouble())
-          .tweenTo(widget.endOpacity.toDouble()),
+      curve: curve,
+      tween: (_degToRad(widget.startAngle))
+          .toDouble()
+          .tweenTo(_degToRad(widget.endAngle).toDouble()),
       builder: (context, child, value) {
-        return Opacity(opacity: value, child: widget.child);
+        return Transform.rotate(
+          alignment: widget.alignment,
+          angle: value,
+          child: widget.child,
+        );
       },
     );
   }
+
+  num _degToRad(num deg) => deg * (pi / 180.0);
 
   @override
   void dispose() {

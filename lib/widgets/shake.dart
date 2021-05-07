@@ -8,16 +8,17 @@ import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:vector_math/vector_math_64.dart';
 
-class Shake extends StatefulWidget {
+class SpringShake extends StatefulWidget {
   final SpringController springController;
   final double start;
   final double end;
   final Duration delay;
   final Duration duration;
   final Curve curve;
+  final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const Shake({
+  const SpringShake({
     Key? key,
     required this.springController,
     required this.start,
@@ -25,14 +26,15 @@ class Shake extends StatefulWidget {
     required this.delay,
     required this.duration,
     required this.curve,
+    this.animStatus,
     required this.child,
   }) : super(key: key);
 
   @override
-  _ShakeState createState() => _ShakeState();
+  _SpringShakeState createState() => _SpringShakeState();
 }
 
-class _ShakeState extends State<Shake> {
+class _SpringShakeState extends State<SpringShake> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -72,9 +74,14 @@ class _ShakeState extends State<Shake> {
     return CustomAnimation<double>(
       control: customAnimationControl,
       duration: duration,
+      animationStatusListener: (status) {
+        if (widget.animStatus != null) {
+          widget.animStatus!(CustomMethods.toAnimStatus(status));
+        }
+      },
       delay: delay,
       curve: curve,
-      tween: (widget.start).tweenTo(widget.end),
+      tween: (widget.start.toDouble()).tweenTo(widget.end.toDouble()),
       builder: (context, child, value) {
         return Transform(
           transform: Matrix4.translation(_shake(value)),

@@ -5,33 +5,35 @@ import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
-class SpringBlink extends StatefulWidget {
+class Bubble extends StatefulWidget {
   final SpringController springController;
-  final double startOpacity;
-  final double endOpacity;
   final Duration delay;
   final Duration duration;
   final Curve curve;
-  final Function(AnimStatus)? animStatus;
+  final double bubbleStart;
+  final double bubbleEnd;
   final Widget child;
+  final Function(AnimStatus)? animStatus;
+  final VoidCallback? onClick;
 
-  const SpringBlink({
+  const Bubble({
     Key? key,
     required this.springController,
-    required this.startOpacity,
-    required this.endOpacity,
     required this.delay,
     required this.duration,
     required this.curve,
-    this.animStatus,
+    required this.bubbleStart,
+    required this.bubbleEnd,
     required this.child,
+    this.animStatus,
+    required this.onClick,
   }) : super(key: key);
 
   @override
-  _SpringBlinkState createState() => _SpringBlinkState();
+  _BubbleState createState() => _BubbleState();
 }
 
-class _SpringBlinkState extends State<SpringBlink> {
+class _BubbleState extends State<Bubble> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -57,9 +59,8 @@ class _SpringBlinkState extends State<SpringBlink> {
   @override
   void didChangeDependencies() {
     setState(() {
-      customAnimationControl = widget.springController.initialAnim == Motion.play
-          ? CustomAnimationControl.mirror
-          : CustomMethods.initialAnim(widget.springController.initialAnim);
+      customAnimationControl =
+          CustomMethods.initialAnim(widget.springController.initialAnim);
 
       delay = widget.delay;
       duration = widget.duration;
@@ -70,21 +71,31 @@ class _SpringBlinkState extends State<SpringBlink> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAnimation<double>(
-      control: customAnimationControl,
-      duration: duration,
-      delay: delay,
-      curve: curve,
-      animationStatusListener: (status) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          customAnimationControl = CustomAnimationControl.playFromStart;
+          if (widget.onClick != null) {
+            widget.onClick!();
+          }
+        });
+      },
+      child: CustomAnimation<double>(
+        control: customAnimationControl,
+        duration: duration,
+        delay: delay,
+        curve: curve,
+        animationStatusListener: (status) {
         if (widget.animStatus != null) {
           widget.animStatus!(CustomMethods.toAnimStatus(status));
         }
       },
-      tween: (widget.startOpacity.toDouble())
-          .tweenTo(widget.endOpacity.toDouble()),
-      builder: (context, child, value) {
-        return Opacity(opacity: value, child: widget.child);
-      },
+        tween: (widget.bubbleStart.toDouble())
+            .tweenTo(widget.bubbleEnd.toDouble()),
+        builder: (context, child, value) {
+          return Transform.scale(scale: value, child: widget.child);
+        },
+      ),
     );
   }
 

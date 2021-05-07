@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'package:spring/src/enums.dart';
 import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
-class Translate extends StatefulWidget {
+class SpringTranslate extends StatefulWidget {
   final SpringController springController;
   final Offset beginOffset;
   final Offset endOffset;
   final Duration delay;
   final Duration duration;
   final Curve curve;
+  final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const Translate({
+  const SpringTranslate({
     Key? key,
     required this.springController,
     required this.beginOffset,
@@ -22,13 +24,14 @@ class Translate extends StatefulWidget {
     required this.duration,
     required this.curve,
     required this.child,
+    this.animStatus,
   }) : super(key: key);
 
   @override
-  _TranslateState createState() => _TranslateState();
+  _SpringTranslateState createState() => _SpringTranslateState();
 }
 
-class _TranslateState extends State<Translate> {
+class _SpringTranslateState extends State<SpringTranslate> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -71,6 +74,11 @@ class _TranslateState extends State<Translate> {
     return CustomAnimation<MultiTweenValues<AniProps>>(
       control: customAnimationControl,
       duration: duration,
+      animationStatusListener: (status) {
+        if (widget.animStatus != null) {
+          widget.animStatus!(CustomMethods.toAnimStatus(status));
+        }
+      },
       delay: delay,
       curve: curve,
       tween: tween,

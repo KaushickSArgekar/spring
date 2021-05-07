@@ -75,4 +75,17 @@ class CustomMethods {
       return Motion.play;
     }
   }
+
+  static AnimStatus toAnimStatus(AnimationStatus status) {
+    switch (status) {
+      case AnimationStatus.dismissed:
+        return AnimStatus.dismissed;
+      case AnimationStatus.forward:
+        return AnimStatus.forward;
+      case AnimationStatus.reverse:
+        return AnimStatus.reverse;
+      case AnimationStatus.completed:
+        return AnimStatus.completed;
+    }
+  }
 }

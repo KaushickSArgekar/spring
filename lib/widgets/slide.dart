@@ -5,7 +5,7 @@ import 'package:spring/src/methods.dart';
 import 'package:spring/src/slide_methods.dart';
 import 'package:spring/src/spring_controller.dart';
 
-class Slide extends StatefulWidget {
+class SpringSlide extends StatefulWidget {
   final SpringController springController;
   final SlideType slideType;
   final bool withFade;
@@ -14,15 +14,17 @@ class Slide extends StatefulWidget {
   final Curve curve;
   final double extend;
   final Tween<Offset>? cTweenOffset;
+  final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const Slide({
+  const SpringSlide({
     Key? key,
     required this.springController,
     required this.withFade,
     required this.slideType,
     required this.delay,
     required this.duration,
+    required this.animStatus,
     required this.curve,
     required this.extend,
     this.cTweenOffset,
@@ -30,10 +32,10 @@ class Slide extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SlideState createState() => _SlideState();
+  _SpringSlideState createState() => _SpringSlideState();
 }
 
-class _SlideState extends State<Slide> {
+class _SpringSlideState extends State<SpringSlide> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -75,6 +77,11 @@ class _SlideState extends State<Slide> {
     return CustomAnimation<MultiTweenValues<AniProps>>(
       control: customAnimationControl,
       tween: tween,
+      animationStatusListener: (status) {
+        if (widget.animStatus != null) {
+          widget.animStatus!(CustomMethods.toAnimStatus(status));
+        }
+      },
       delay: delay,
       duration: duration,
       curve: curve,

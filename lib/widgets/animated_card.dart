@@ -9,7 +9,6 @@ import 'package:supercharged/supercharged.dart';
 class AnimatedCard extends StatefulWidget {
   final SpringController springController;
   final Duration delay;
-  final Duration duration;
   final Curve curve;
   final double fromWidth;
   final double toWidth;
@@ -31,13 +30,13 @@ class AnimatedCard extends StatefulWidget {
   final EdgeInsets? margin;
   final ShapeBorder? shape;
   final bool semanticContainer;
+  final Function(AnimStatus)? animStatus;
   final Widget child;
 
   const AnimatedCard(
       {Key? key,
       required this.springController,
       required this.delay,
-      required this.duration,
       required this.curve,
       required this.fromWidth,
       required this.toWidth,
@@ -59,6 +58,7 @@ class AnimatedCard extends StatefulWidget {
       this.margin,
       this.semanticContainer = true,
       this.shape,
+      this.animStatus,
       required this.child})
       : super(key: key);
 
@@ -69,8 +69,12 @@ class AnimatedCard extends StatefulWidget {
 class _AnimatedCardState extends State<AnimatedCard> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
-  late Duration duration;
   late Curve curve;
+  late Duration widthDuation;
+  late Duration heightDuration;
+  late Duration colorDuration;
+  late Duration elevationDuration;
+  late Duration shadowDuration;
 
   @override
   void initState() {
@@ -78,9 +82,6 @@ class _AnimatedCardState extends State<AnimatedCard> {
       setState(() {
         delay =
             event.delay == CustomMethods.cDuartion ? widget.delay : event.delay;
-        duration = event.animDuartion == CustomMethods.cDuartion
-            ? widget.duration
-            : event.animDuartion;
         curve =
             event.curve == CustomMethods.cCurve ? widget.curve : event.curve;
         customAnimationControl = event.customAnimationControl;
@@ -96,8 +97,12 @@ class _AnimatedCardState extends State<AnimatedCard> {
           CustomMethods.initialAnim(widget.springController.initialAnim);
 
       delay = widget.delay;
-      duration = widget.duration;
       curve = widget.curve;
+      widthDuation = widget.widthDuration;
+      heightDuration = widget.heightDuration;
+      colorDuration = widget.colorDuration;
+      elevationDuration = widget.elevationDuration;
+      shadowDuration = widget.shadowDuration;
     });
     super.didChangeDependencies();
   }
@@ -106,25 +111,25 @@ class _AnimatedCardState extends State<AnimatedCard> {
   Widget build(BuildContext context) {
     final _tween = MultiTween<CardProps>()
       ..add(CardProps.width, widget.fromWidth.tweenTo(widget.toWidth),
-          widget.widthDuration)
+          widthDuation)
       ..add(CardProps.height, widget.fromHeight.tweenTo(widget.toHeight),
-          widget.heightDuration)
-      ..add(
-          CardProps.elevation,
-          widget.fromElevation.tweenTo(widget.toElevation),
-          widget.elevationDuration)
+          heightDuration)
+      ..add(CardProps.elevation,
+          widget.fromElevation.tweenTo(widget.toElevation), elevationDuration)
       ..add(CardProps.color, widget.fromColor.tweenTo(widget.toColor),
-          widget.colorDuration)
-      ..add(
-          CardProps.shadowColor,
-          widget.fromShadowColor.tweenTo(widget.toShadowColor),
-          widget.shadowDuration);
+          colorDuration)
+      ..add(CardProps.shadowColor,
+          widget.fromShadowColor.tweenTo(widget.toShadowColor), shadowDuration);
 
     return CustomAnimation<MultiTweenValues<CardProps>>(
       control: customAnimationControl,
-      duration: duration,
-      delay: delay,
+      duration: _tween.duration,
       curve: curve,
+      animationStatusListener: (status) {
+        if (widget.animStatus != null) {
+          widget.animStatus!(CustomMethods.toAnimStatus(status));
+        }
+      },
       tween: _tween,
       builder: (context, child, value) {
         return SizedBox(

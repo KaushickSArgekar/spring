@@ -8,7 +8,7 @@ import 'package:supercharged/supercharged.dart';
 import 'package:sized_context/sized_context.dart';
 
 class SlideMethods {
-  static MultiTween<AniProps> getTween(BuildContext context, Slide widget) {
+  static MultiTween<AniProps> getTween(BuildContext context, SpringSlide widget) {
     final extend = widget.extend;
     switch (widget.slideType) {
       case SlideType.slide_in_left:

@@ -5,16 +5,17 @@ import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
-class Fade extends StatefulWidget {
+class SpringFade extends StatefulWidget {
   final SpringController springController;
   final double startOpacity;
   final double endOpacity;
   final Duration delay;
   final Duration duration;
   final Curve curve;
+  final Function(AnimStatus)? animStatus;
   final Widget child;
 
-  const Fade({
+  const SpringFade({
     Key? key,
     required this.springController,
     required this.startOpacity,
@@ -23,13 +24,14 @@ class Fade extends StatefulWidget {
     required this.duration,
     required this.curve,
     required this.child,
+    this.animStatus,
   }) : super(key: key);
 
   @override
-  _FadeState createState() => _FadeState();
+  _SpringFadeState createState() => _SpringFadeState();
 }
 
-class _FadeState extends State<Fade> {
+class _SpringFadeState extends State<SpringFade> {
   late CustomAnimationControl customAnimationControl;
   late Duration delay;
   late Duration duration;
@@ -72,6 +74,11 @@ class _FadeState extends State<Fade> {
       duration: duration,
       delay: delay,
       curve: curve,
+      animationStatusListener: (status) {
+        if (widget.animStatus != null) {
+          widget.animStatus!(CustomMethods.toAnimStatus(status));
+        }
+      },
       tween: (widget.startOpacity.toDouble())
           .tweenTo(widget.endOpacity.toDouble()),
       builder: (context, child, value) {
