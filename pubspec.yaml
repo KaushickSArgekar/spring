@@ -1,6 +1,7 @@
 name: spring
-description: A new Flutter package project.
-version: 0.0.1
+description: A simple & powerfull pre-built animation kit 
+version: 1.0.5
+homepage: https://github.com/KaushickSArgekar/spring
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -9,7 +10,7 @@ environment:
 dependencies:
   simple_animations: ^3.1.1
   supercharged: ^2.0.0
-  sized_context: ^1.0.0-nullsafety
+  universal_platform: ^1.0.0-nullsafety
   vector_math: ^2.1.0
   flutter:
     sdk: flutter

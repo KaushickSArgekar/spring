@@ -5,7 +5,7 @@ import 'package:spring/spring.dart';
 import 'package:spring/src/methods.dart';
 import 'package:spring/widgets/slide.dart';
 import 'package:supercharged/supercharged.dart';
-import 'package:sized_context/sized_context.dart';
+import 'package:spring/src/sized_context.dart';
 
 class SlideMethods {
   static MultiTween<AniProps> getTween(BuildContext context, SpringSlide widget) {
