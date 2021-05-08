@@ -23,12 +23,7 @@ class SpringExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-          child: Spring.slide(
-              animStatus: (status) {
-                print(status);
-              },
-              slideType: SlideType.slide_in_left,
-              child: FlutterLogo())),
+          child:Spring.blink(child: FlutterLogo())),
     );
   }
 }

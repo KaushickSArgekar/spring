@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'package:spring/spring.dart';
+import 'package:spring/src/enums.dart';
 import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
+
 
 class SpringBlink extends StatefulWidget {
   final SpringController springController;

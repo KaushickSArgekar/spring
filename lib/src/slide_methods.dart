@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:spring/spring.dart';
 import 'package:spring/src/methods.dart';
-import 'package:spring/widgets/slide.dart';
+import 'package:spring/src/widgets/slide.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:spring/src/sized_context.dart';
 

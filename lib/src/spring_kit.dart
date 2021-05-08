@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:spring/spring.dart';
 import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
-import 'package:spring/widgets/animated_card.dart';
-import 'package:spring/widgets/blink.dart';
-import 'package:spring/widgets/bubble.dart';
-import 'package:spring/widgets/fade_in.dart';
-import 'package:spring/widgets/flip.dart';
-import 'package:spring/widgets/opacity.dart';
-import 'package:spring/widgets/pop.dart';
-import 'package:spring/widgets/rotate.dart';
-import 'package:spring/widgets/scale.dart';
-import 'package:spring/widgets/shake.dart';
-import 'package:spring/widgets/slide.dart';
-import 'package:spring/widgets/translate.dart';
+import 'package:spring/src/widgets/animated_card.dart';
+import 'package:spring/src/widgets/blink.dart';
+import 'package:spring/src/widgets/bubble.dart';
+import 'package:spring/src/widgets/fade_in.dart';
+import 'package:spring/src/widgets/flip.dart';
+import 'package:spring/src/widgets/opacity.dart';
+import 'package:spring/src/widgets/pop.dart';
+import 'package:spring/src/widgets/rotate.dart';
+import 'package:spring/src/widgets/scale.dart';
+import 'package:spring/src/widgets/shake.dart';
+import 'package:spring/src/widgets/slide.dart';
+import 'package:spring/src/widgets/translate.dart';
 
 class Spring {
   static Widget slide({
