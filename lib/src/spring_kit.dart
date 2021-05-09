@@ -274,7 +274,7 @@ class Spring {
     required Widget rearWidget,
     bool toggleOnClick = true,
     Function(String)? onTap,
-    Axis flipAxis = Axis.vertical,
+    Axis flipAxis = Axis.horizontal,
     Duration animDuration = const Duration(seconds: 1),
   }) {
     return SpringFlip(
