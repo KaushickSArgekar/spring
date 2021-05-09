@@ -7,16 +7,16 @@ Spring offers various types of slide transcation. and you can animate and custom
 - slide out right & left.
 - slide out top & bottom.
 
-##Sipmle Slide 
-
-![simple_slide](https://github.com/KaushickSArgekar/spring/blob/master/assets/simple_slide.gif)
+## Sipmle Slide 
 
 ```dart
 Spring.slide(
-          slideType: SlideType.slide_in_left,
-          child: RedCard(),
-        )
-		```
+     slideType: SlideType.slide_in_left,
+     child: RedCard())
+ ```
+ ![simple_slide](https://github.com/KaushickSArgekar/spring/blob/master/assets/simple_slide.gif)
+ 
+
 
 ## Customized slide
 
@@ -63,46 +63,42 @@ class SpringExample extends StatelessWidget {
   }
 }
 ```
+![simple_slide](https://github.com/KaushickSArgekar/spring/blob/master/assets/customized_slide.gif)
 
 ## withFade
 you can set the fade with transaction by enablish **withFade=true** by default the value is false.
 
 ```dart
 Spring.slide(
-            springController: springController,
-            slideType: SlideType.slide_in_left,
-            withFade: true,
-            child: FlutterLogo(
-              size: 100,
-            ),
-          ),
-		  ```
+   springController: springController,
+   slideType: SlideType.slide_in_left,
+   withFade: true,
+   child: FlutterLogo())
+   ```
 
-##extend
+## extend
 
 You can extend the length of slide transaction with extend paramater, by deafult extend value is **10** extend is used if the widget size is big. Slide defaulty takes start of the screen. as a starting point.
 
 ```dart
 Spring.slide(
-            extend: 30,
-            slideType: SlideType.slide_in_left,
-            child: FlutterLogo(),
-          )
-		  ```
+     extend: 30,
+     slideType: SlideType.slide_in_left,
+     child: FlutterLogo())
+```
 
 - For slide_in the extend value should be positive example( **extend=30**).
 - And for slide_out & reverse transactoins (**extend = - 30**).
 
-##cutomTweenOffset
+## cutomTweenOffset
 
 Offset of spring animation can be customized using customTweenOffset.
 setting the customTweenOffset ignores the parameter slideType.
 
 ```dart
 Spring.slide(
-            slideType: SlideType.slide_in_left,  //ignored
-            child: FlutterLogo(),
-            cutomTweenOffset: Tween(begin: Offset(-100,0),end: Offset(100,0))
-          )
-		  ```
+	slideType: SlideType.slide_in_left,  //ignored
+	child: FlutterLogo(),
+	cutomTweenOffset: Tween(begin: Offset(-100,0),end: Offset(100,0)))
+```
 
