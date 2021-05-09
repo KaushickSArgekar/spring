@@ -1,3 +1,6 @@
-## 1.0.6
+## 2.0.0
 
-* Packages Upgrade
+* Animation status listner added.
+* Added null-saftey.
+* Controlling the animations without setting the state.
+  
