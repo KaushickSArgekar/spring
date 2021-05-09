@@ -1,4 +1,4 @@
-# Slide
+# FadeIn & FadeOut
 
  ![simple_fade](https://github.com/KaushickSArgekar/spring/blob/master/assets/fade_one.gif?raw=true)
 
