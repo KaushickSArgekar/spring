@@ -1,6 +1,6 @@
 # Slide
 
- ![all_slide](https://github.com/KaushickSArgekar/spring/blob/master/assets/all_slide.gif?raw=true)
+ ![all_slide](https://github.com/KaushickSArgekar/spring/blob/master/assets/slide_all.gif?raw=true)
 
 Spring offers various types of slide transcation. and you can animate and customize them without changing the setting the state.
 
