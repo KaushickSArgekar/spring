@@ -88,8 +88,8 @@ class Spring {
 
   static Widget fadeIn({
     SpringController? springController,
-    double startOpacity = 1.0,
-    double endOpacity = 0.0,
+    double startOpacity = 0.0,
+    double endOpacity = 1.0,
     Duration delay = const Duration(seconds: 0),
     Duration animDuration = const Duration(seconds: 1),
     Curve curve = Curves.easeInOut,
