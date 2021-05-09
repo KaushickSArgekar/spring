@@ -1,4 +1,10 @@
-enum Motion { play, pause, reverse, loop, mirror }
+enum Motion {
+  play,
+  pause,
+  reverse,
+  loop,
+  mirror,
+}
 
 enum SlideType {
   slide_in_right,
@@ -9,15 +15,17 @@ enum SlideType {
   slide_out_left,
   slide_out_top,
   slide_out_bottom,
-  
 }
 
-enum CardProps{
-  width,height,elevation,color,shadowColor
+enum CardProps {
+  width,
+  height,
+  elevation,
+  color,
+  shadowColor,
 }
 
-
-enum AnimStatus{
+enum AnimStatus {
   forward,
   reverse,
   dismissed,

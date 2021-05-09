@@ -1,6 +1,6 @@
 name: spring
-description: A simple & powerfull pre-built animation kit 
-version: 1.0.9
+description: A simple & powerfull pre-built animation kit for faster and easy apps developement.
+version: 1.1.0
 homepage: https://github.com/KaushickSArgekar/spring
 
 environment:
