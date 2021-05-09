@@ -11,7 +11,6 @@
  ```
 
 
-
 ## Customized Blink
 
 ```dart
