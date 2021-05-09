@@ -1,9 +1,9 @@
 # Bubble Button
  ![bubble_button](https://github.com/KaushickSArgekar/spring/blob/master/assets/bubble.gif?raw=true)
 
+## Animation will be triggred on clicking the button
 
-
-## Simple button
+## Simple bubble  button
 
 ```dart
 Spring.bubbleButton(
