@@ -1,10 +1,10 @@
 # Animated Card
 
 
- ![simple_fade](https://github.com/KaushickSArgekar/spring/blob/master/assets/animated_card.gif?raw=true)
+ ![animated_card](https://github.com/KaushickSArgekar/spring/blob/master/assets/animated_card.gif?raw=true)
 
 
-## Sipmle card 
+## Simple card 
 ```dart
 Spring.animatedCard(
     fromWidth: 20, 
@@ -62,4 +62,3 @@ class SpringExample extends StatelessWidget {
   }
 }
 
-```
