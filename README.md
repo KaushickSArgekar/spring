@@ -90,10 +90,10 @@ class SpringExample extends StatelessWidget {
 
 ```dart
 
-//cinitial anim = Motion.play
+//initial anim = Motion.play
 final SpringController springController =
      SpringController(); 
-//
+// you can set the initial anim using initialAnim param..
 final SpringController springController =
       SpringController(initialAnim: Motion.pause,);
 ```
