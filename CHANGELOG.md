@@ -1,3 +1,10 @@
+## 2.0.1
+
+* Docs Added.
+* Code Refactor.
+
+
+
 ## 2.0.0
 
 * Animation status listner added.
