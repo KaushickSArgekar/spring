@@ -1,3 +1,5 @@
+
+/// Motion
 enum Motion {
   play,
   pause,
@@ -6,6 +8,7 @@ enum Motion {
   mirror,
 }
 
+/// SlideType
 enum SlideType {
   slide_in_right,
   slide_in_left,
@@ -17,6 +20,7 @@ enum SlideType {
   slide_out_bottom,
 }
 
+
 enum CardProps {
   width,
   height,
@@ -25,6 +29,7 @@ enum CardProps {
   shadowColor,
 }
 
+/// AnimStatus
 enum AnimStatus {
   forward,
   reverse,

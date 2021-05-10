@@ -8,6 +8,7 @@ import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:vector_math/vector_math_64.dart';
 
+/// Shake
 class SpringShake extends StatefulWidget {
   final SpringController springController;
   final double start;

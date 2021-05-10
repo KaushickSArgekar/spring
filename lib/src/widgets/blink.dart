@@ -6,6 +6,7 @@ import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
 
+/// Blink
 class SpringBlink extends StatefulWidget {
   final SpringController springController;
   final double startOpacity;

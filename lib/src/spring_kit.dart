@@ -16,6 +16,7 @@ import 'package:spring/src/widgets/slide.dart';
 import 'package:spring/src/widgets/translate.dart';
 
 class Spring {
+  /// returns slide widget
   static Widget slide({
     required SlideType slideType,
     bool withFade = false,
@@ -42,6 +43,7 @@ class Spring {
     );
   }
 
+  /// returns slide Scale widget
   static Widget scale({
     SpringController? springController,
     required double start,
@@ -64,6 +66,7 @@ class Spring {
     );
   }
 
+  /// returns blink widget
   static Widget blink({
     SpringController? springController,
     double startOpacity = 0.0,
@@ -86,6 +89,7 @@ class Spring {
     );
   }
 
+  /// returns fadeIn Widget
   static Widget fadeIn({
     SpringController? springController,
     double startOpacity = 0.0,
@@ -108,6 +112,7 @@ class Spring {
     );
   }
 
+  /// returns fadeOut widget
   static Widget fadeOut({
     SpringController? springController,
     double startOpacity = 1.0,
@@ -130,6 +135,7 @@ class Spring {
     );
   }
 
+  /// returns pop widget
   static Widget pop({
     SpringController? springController,
     Duration delay = const Duration(seconds: 0),
@@ -148,6 +154,7 @@ class Spring {
     );
   }
 
+  /// returns translate  widget
   static Widget translate({
     SpringController? springController,
     required Offset beginOffset,
@@ -169,6 +176,7 @@ class Spring {
         child: child);
   }
 
+  /// returns shake widget
   static Widget shake({
     SpringController? springController,
     double start = 50.0,
@@ -190,6 +198,7 @@ class Spring {
         child: child);
   }
 
+  /// returns Animated Card widget
   static Widget animatedCard({
     SpringController? springController,
     required double fromWidth,
@@ -245,6 +254,7 @@ class Spring {
         child: child);
   }
 
+  /// returns Rotate widget
   static Widget rotate({
     SpringController? springController,
     double startAngle = 0.0,
@@ -268,6 +278,7 @@ class Spring {
         child: child);
   }
 
+  /// returns Flip widget
   static Widget flip({
     SpringController? springController,
     required Widget frontWidget,
@@ -288,6 +299,7 @@ class Spring {
     );
   }
 
+  /// returns Bubble Button widget
   static Widget bubbleButton({
     SpringController? springController,
     VoidCallback? onTap,
@@ -312,6 +324,7 @@ class Spring {
     );
   }
 
+  /// returns Opacity widget
   static Widget opacity({
     SpringController? springController,
     required double startOpacity,

@@ -6,6 +6,8 @@ import 'package:spring/src/methods.dart';
 import 'package:spring/src/spring_controller.dart';
 import 'package:supercharged/supercharged.dart';
 
+
+/// AnimatedCard
 class AnimatedCard extends StatefulWidget {
   final SpringController springController;
   final Duration delay;

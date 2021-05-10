@@ -6,6 +6,7 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:spring/src/enums.dart';
 import 'package:spring/src/methods.dart';
 
+
 class SpringAnimation {
   final CustomAnimationControl customAnimationControl;
   final Duration delay;
@@ -16,7 +17,10 @@ class SpringAnimation {
       this.customAnimationControl, this.delay, this.animDuartion, this.curve);
 }
 
+/// SpringController
 class SpringController {
+
+  /// initial motion is Motion.play
   final Motion? initialAnim;
 
   SpringController({this.initialAnim});
@@ -24,6 +28,7 @@ class SpringController {
   final StreamController<SpringAnimation> controller =
       StreamController<SpringAnimation>.broadcast();
 
+  /// play()
   void play(
       {motion = Motion.play,
       Duration? delay,

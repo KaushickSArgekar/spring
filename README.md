@@ -7,7 +7,7 @@
 ## 🔨 Installation
 ```yaml
 dependencies:
-     spring: ^2.0.0
+     spring: ^2.0.1
 ```
 
  ![simple_fade](https://github.com/KaushickSArgekar/spring/blob/master/assets/spring_main.gif?raw=true)

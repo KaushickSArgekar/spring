@@ -5,6 +5,8 @@ import 'package:spring/src/methods.dart';
 import 'package:spring/src/slide_methods.dart';
 import 'package:spring/src/spring_controller.dart';
 
+
+/// Slide
 class SpringSlide extends StatefulWidget {
   final SpringController springController;
   final SlideType slideType;
