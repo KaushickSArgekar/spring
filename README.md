@@ -7,7 +7,7 @@
 ## 🔨 Installation
 ```yaml
 dependencies:
-     spring: ^2.0.1
+     spring: ^2.0.2
 ```
 
  ![simple_fade](https://github.com/KaushickSArgekar/spring/blob/master/assets/spring_main.gif?raw=true)
@@ -18,18 +18,18 @@ dependencies:
 
 # 🎥 Spring Animations
 
-- [Slide](https://github.com/KaushickSArgekar/spring/blob/master/demo/slide.md)
-- [Scale](https://github.com/KaushickSArgekar/spring/blob/master/demo/scale.md)
-- [Animated Card](https://github.com/KaushickSArgekar/spring/blob/master/demo/animated_card.md)
-- [Flip](https://github.com/KaushickSArgekar/spring/blob/master/demo/flip.md)
-- [Fade In & Out](https://github.com/KaushickSArgekar/spring/blob/master/demo/fade_in_out.md)
--  [Opacity](https://github.com/KaushickSArgekar/spring/blob/master/demo/opacity.md)
--  [Bubble Button](https://github.com/KaushickSArgekar/spring/blob/master/demo/bubble_button.md)
--  [Blink](https://github.com/KaushickSArgekar/spring/blob/master/demo/blink.md)
--  [Pop](https://github.com/KaushickSArgekar/spring/blob/master/demo/pop.md)
--  [Shake](https://github.com/KaushickSArgekar/spring/blob/master/demo/shake.md)
--  [Rotate](https://github.com/KaushickSArgekar/spring/blob/master/demo/rotate.md)
--  [Translate](https://github.com/KaushickSArgekar/spring/blob/master/demo/translate.md)
+- [Slide](example/slide.md)
+- [Scale](example/scale.md)
+- [Animated Card](example/animated_card.md)
+- [Flip](example/flip.md)
+- [Fade In & Out](example/fade_in_out.md)
+- [Opacity](example/opacity.md)
+-  [Bubble Button](example/bubble_button.md)
+-  [Blink](example/blink.md)
+-  [Pop](example/pop.md)
+-  [Shake](example/shake.md)
+-  [Rotate](example/rotate.md)
+-  [Translate](example/translate.md)
 
 ### ⚙ Import
 

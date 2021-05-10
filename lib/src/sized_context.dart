@@ -12,8 +12,10 @@ extension SizedContext on BuildContext {
   bool get isLandscape => mq.orientation == Orientation.landscape;
 
   Size get sizePx => mq.size;
-
+  
+  /// returns width of a screen
   double get widthPx => sizePx.width;
 
+  /// returns height of a screen
   double get heightPx => sizePx.height;
 }
